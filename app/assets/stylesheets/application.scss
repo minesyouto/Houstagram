@@ -9,7 +9,37 @@
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
- *
  *= require_tree .
  *= require_self
  */
+ $secondary: #f3d2c1;
+ $primary: #001858;
+ @import "bootstrap";
+ @import "font-awesome";
+ 
+ a:hover {
+  text-decoration: none;
+ }
+* {
+  background:#fef6e4;
+  color:#001858;
+ }
+ .border {
+  color: #001858;
+ }
+ 
+ 
+ // 以下カラーコード記載
+ // 背景色:#fef6e4
+ // テキスト:#001858
+ // 段落:#172c66
+ // ボタン:#f582ae
+ // ボタンのテキスト:#001858
+ // ボーダー:#001858
+ // メイン:#f3d2c1
+ // ハイライト:#fef6e4
+ // 2次背景:#8bd3dd
+ // 3次背景:#f582ae
+
+
+

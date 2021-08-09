@@ -1,4 +1,17 @@
 Rails.application.routes.draw do
   devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  
+  root to: "posts#index"
+  
+  resources :users
+
+  resources :posts do
+    post "likes" => "likes#create"
+    delete "likes" => "likes#destroy"
+    post "comments" => "comments#create"
+    delete "comments" => "comments#destroy"
+  end
+  
+  
+  
 end

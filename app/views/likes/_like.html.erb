@@ -1,0 +1,16 @@
+<% if user_signed_in? %>
+    <% if current_user.already_liked?(post) %>
+        <%= link_to post_likes_path(post), method: :delete, remote: true do %>
+            <i class="fa fa-heart faa-shake animated-hover bg-secondary" style="color: red;"></i>
+        <% end %>
+        <%= post.likes.count %>
+    <% else %>
+        <%= link_to post_likes_path(post), method: :post, remote: true do %>
+            <i class="fa fa-heart like faa-shake animated-hover bg-secondary" style="color: #C0C0C0;"></i>
+        <% end %>
+        <%= post.likes.count %>
+    <% end %>
+<% else %>
+    <i class="fa fa-heart like faa-shake animated-hover bg-secondary" style="color: #C0C0C0;"></i>
+    <%= post.likes.count %>
+<% end %>

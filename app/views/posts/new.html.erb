@@ -1,0 +1,15 @@
+<h1>New Post</h1>
+
+<%= form_with model: @post, local: true do |f| %>
+    <%= f.label :"タイトル" %>
+    <%= f.text_field :title %>
+    
+    <%= f.label :"本文" %>
+    <%= f.text_area :content %>
+    
+    <%= f.label :"画像" %>
+    <%= f.attachment_field :post_images_post_images, multiple: true %>
+    
+    <%= f.submit "投稿" %>
+<% end %>
+

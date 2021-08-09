@@ -1,0 +1,60 @@
+<div class="container container-fluid">
+
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @post.content %>
+</p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @post.username %>
+</p>
+
+<table>
+  <td>
+  <% if @post.post_images.present? %>
+    <% @post.post_images.each do |post_image| %>
+      <%= attachment_image_tag post_image, :post_image, :fill, 200, 200 %>
+    <% end %>
+  <% else %>
+    <%= image_tag "/houstagram/app/assets/images/no_image.png", size: "200x200" %>
+  <% end %>
+    
+  </td>
+</table>
+
+<div id="show_like_<%= @post.id %>">
+  <%= render 'likes/like', post: @post %>
+</div>
+
+<div class="comment-area">
+  <h3 class="comment-title">コメント</h3>
+  <div id="comments_area">
+    <%= render partial: "comments/index", locals: {comments: @comments} %>
+  </div>
+</div>
+
+<% if user_signed_in? %>
+  <div class="comment-create">
+    <h3 class="comment-title">コメントを投稿する</h3>
+    <%= render partial: "comments/form", locals: {comment: @comment, post: @post} %>
+  </div>
+  <% if @post.user_id == current_user.id %>
+    <%= link_to 'Edit', edit_post_path(@post) %> |
+  <% end %>
+  
+  
+  
+  <% else %>
+  
+<% end %>
+
+
+<%= link_to 'Back', posts_path %>
+
+</div>

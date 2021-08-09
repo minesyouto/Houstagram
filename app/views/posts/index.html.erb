@@ -1,0 +1,27 @@
+<% if flash[:alert] %>
+  <p class="alert alert-warning"><%= flash[:notice] %></p>
+<% end %>
+<div class="container-fluid">
+  <div class="container">
+    <h1>Posts</h1>
+  
+    <div id="post_index_new">
+      <%= render 'post_new', posts: @posts %>
+    </div>
+  
+  <%= link_to 'New Post', new_post_path %>
+  
+    <% if user_signed_in? %>
+        <li>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to "新規登録", new_user_registration_path %>
+        </li>
+        <li>
+          <%= link_to "ログイン", new_user_session_path %>
+        </li>
+    <% end %>
+  </div>
+</div>
