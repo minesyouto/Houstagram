@@ -8,8 +8,8 @@
             <div class="comment-text">
                 <div class="comment-entry">
                     <%= comment.content %>
-                    <% if comment.user == current_user %>
-                        <%= link_to post_comments_path(comment.post_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %>
+                    <% if comment.user == current_user or current_user.admin?%>
+                        <%= link_to comment_path(comment.id), method: :delete, remote: true, class: "comment_destroy" do %>
                             <i class="fas fa-trash" style="color: black;"></i>
                         <% end %>
                     <% end %>
@@ -31,7 +31,7 @@
                         <div class="comment-text">
                             <div class="comment-entry">
                                 <%= comment.content %>
-                                <% if comment.user == current_user %>
+                                <% if comment.user == current_user or current_user.admin? %>
                                     <%= link_to post_comments_path(comment.post_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %>
                                         <i class="fas fa-trash" style="color: black;"></i>
                                     <% end %>

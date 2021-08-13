@@ -1,0 +1,23 @@
+<!--フォローボタンを表示するフォーム-->
+
+<% if user_signed_in? && @user != current_user %>
+    <div id="follow_form">
+        <% if current_user.following?(@user) %>
+            <%= render "unfollow" %>
+        <% else %>
+            <%= render "follow" %>
+        <% end %>
+    </div>
+<% end %>
+<!--ユーザーがログイン状態で且つ表示しているユーザーがログインユーザーでない場合にフォローボタンを表示している-->
+<div>
+        <h5 id="follower-count_<%= @user.id %>">
+            フォロワー<%= @user.followers.count %>人
+        </h5>
+</div>
+
+<div>
+    <h5 id="following-count_<%= @user.id %>">
+        フォロー<%= @user.following.count %>人
+    </h5>
+</div>

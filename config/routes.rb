@@ -3,14 +3,21 @@ Rails.application.routes.draw do
   
   root to: "posts#index"
   
-  resources :users
+  #フォローユーザーとフォロワーを取得できるようにネスト
+  resources :users do
+    get "following" => "users#following"
+    get "followers" => "users#followers"
+  end
+  get 'users/:id' => "users#show_ather"
+  resources :relationships, only: [:create, :destroy]
 
   resources :posts do
     post "likes" => "likes#create"
     delete "likes" => "likes#destroy"
     post "comments" => "comments#create"
-    delete "comments" => "comments#destroy"
   end
+  resources :comments, only: [:destroy]
+  get 'items/search', to: "items#search"
   
   
   

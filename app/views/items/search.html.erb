@@ -1,0 +1,14 @@
+<!--検索バーを表示-->
+<%= form_with url: "items_search_path", method: "get" do |f| %>
+  <%= f.text_field :title %>
+  <%= f.submit "検索" %>
+<% end %>
+
+#検索結果を表示
+<% if @items %>
+  <% @items.each do |item| %>
+    <%= image_tag mediumimageurls %>
+    <%= item.itemname %>
+    <%= item.itemprice %>
+  <% end %>
+<% end %>

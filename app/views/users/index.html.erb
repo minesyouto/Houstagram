@@ -1,0 +1,7 @@
+<h1>フォロー、フォロワー一覧</h1>
+<div class="follow">
+    <h5>フォロー</h5>
+    <% @users.each do |follow| %>
+        <p><%= follow.username %></p>
+    <% end %>
+</div>

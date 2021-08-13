@@ -12,6 +12,7 @@ class PostsController < ApplicationController
     @comment = Comment.new
     #コメントを新着順で表示するようにする
     @comments = @post.comments.order(created_at: :desc)
+    @user = User.find_by(id: @post.user_id)
   end
 
   def new
@@ -52,7 +53,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-      redirect_to posts_url, notice: "削除完了" 
+    redirect_to posts_url, notice: "削除完了" 
   end
 
   private

@@ -12,8 +12,12 @@
 
 <p>
   <strong>Username:</strong>
-  <%= @post.username %>
+  <%= link_to user_path(@post.user_id) do %>
+    <%= @post.username %>
+  <% end %>
 </p>
+
+
 
 <table>
   <td>
@@ -44,12 +48,10 @@
     <h3 class="comment-title">コメントを投稿する</h3>
     <%= render partial: "comments/form", locals: {comment: @comment, post: @post} %>
   </div>
-  <% if @post.user_id == current_user.id %>
-    <%= link_to 'Edit', edit_post_path(@post) %> |
+  <% if @post.user_id == current_user.id or current_user.admin?%>
+    <%= link_to '編集', edit_post_path(@post) %>
+    <%= link_to '削除', post_path(@post) ,method: :delete %>
   <% end %>
-  
-  
-  
   <% else %>
   
 <% end %>
