@@ -6,9 +6,9 @@ class ItemsController < ApplicationController
         if @keyword.present?
             #ここでresultsに楽天APIから取得したデータ(jsonデータ)を格納する
             #今回は商品名を検索して一致するデータを格納するように設定
-            results = RakutenWebService::Ichiba::Item.search(keyword: params[:keyword])
+            results = RakutenWebService::Ichiba::Item.search(keyword: @keyword)
             #次にここで@itemsに取得したjsonデータのうち最初の10件を格納する
-            results.first(10).each do |results|
+            results.first(10).each do |result|
                 item = Item.new(read(result))
                 @items << item
             end
@@ -20,6 +20,7 @@ class ItemsController < ApplicationController
                 item.save
             end
         end
+        pp @items
     end
     
     private
@@ -43,3 +44,4 @@ class ItemsController < ApplicationController
     
     
 end
+
