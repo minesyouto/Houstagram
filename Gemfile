@@ -70,3 +70,7 @@ gem "jquery-rails"
 gem 'font-awesome-sass', '~> 5.13'
 gem "font-awesome-rails"
 gem 'rakuten_web_service'
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
