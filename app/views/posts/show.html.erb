@@ -23,7 +23,7 @@
   <td>
   <% if @post.post_images.present? %>
     <% @post.post_images.each do |post_image| %>
-      <%= attachment_image_tag post_image, :post_image, :fill, 200, 200 %>
+      <%= attachment_image_tag post_image, :post_image, size: "200x200" %>
     <% end %>
   <% else %>
     <%= image_tag "/houstagram/app/assets/images/no_image.png", size: "200x200" %>
