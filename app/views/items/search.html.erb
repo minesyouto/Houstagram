@@ -5,10 +5,9 @@
 <% end %>
 
 <!--#検索結果を表示-->
-<% if @items %>
-  <% @items.each do |item| %>
-    <%= item.itemname %>
-  <% end %>
-<% end %>
+<div id="search_result">
+  <% render "search_result" %>
+</div>
+
 
 
