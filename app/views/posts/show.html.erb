@@ -11,6 +11,12 @@
 </p>
 
 <p>
+  <strong>タグ:</strong>
+  <%= render 'tag_list', tag_list: @post.tag_list %>
+  <!--タグの表示をパーシャルに変更-->
+</p>
+
+<p>
   <strong>Username:</strong>
   <%= link_to user_path(@post.user_id) do %>
     <%= @post.username %>

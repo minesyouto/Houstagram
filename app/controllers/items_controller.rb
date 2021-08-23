@@ -23,25 +23,29 @@ class ItemsController < ApplicationController
         pp @items
     end
     
+    def item_save
+        @item = Item.find(params[:id])
+        @item.save
+    end
+    
     private
     #楽天APIのデータから必要なデータを絞り込む、且つ対応するカラムにデータを格納するメソッドを設定
     def read(result)
-        itemname = result["itemName"]
-        itemcode = result["itemCode"]
-        itemprice = result["itemPrice"]
-        itemurl = result["itemUrl"]
+        name = result["itemName"]
+        code = result["itemCode"]
+        price = result["itemPrice"]
+        url = result["itemUrl"]
         imageflag = result["imageFlag"]
-        mediumimageurls = result["mediumImageUrls"]
+        image = result['mediumImageUrls'].first.gsub('?_ex=128x128', '')
         {
-            itemname: itemname,
-            itemcode: itemcode,
-            itemprice: itemprice,
-            itemurl: itemurl,
+            name: name,
+            code: code,
+            price: price,
+            url: url,
             imageflag: imageflag,
-            mediumimageurls: mediumimageurls
+            image: image
         }
     end
     
     
 end
-

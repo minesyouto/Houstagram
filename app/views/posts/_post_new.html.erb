@@ -3,10 +3,10 @@
         <h2>新着投稿</h2>
     </div>
     
-<% if @post.present? %>
+<% if @posts.present? %>
     
     <div class="row justify-content-center">
-        <% @posts[1..3].each do |post| %>
+        <% @posts.each do |post| %>
             <div class="card ml-3 mb-4" style="width: 16rem;">
                 <% post.post_images.first(1).each do |post_image| %>
                     <%= attachment_image_tag post_image, :post_image, size: "100x200" , class:"card-img-top border"%>
@@ -17,7 +17,14 @@
                     <%= post.username %>
                 </h5>
               </div>
-              <div class="card-body bg-secondary d-flex justify-content-end">
+              
+              <div class="card-body bg-secondary">
+                  <%= post.title %>
+                  <br>
+                  <%= render 'tag_list', tag_list: post.tag_list %>
+              </div>
+              
+              <div class="card-text bg-secondary d-flex justify-content-end">
                 <%= render 'likes/like', post: post %>
                 <%= link_to post_path(post) do %>
                     <i class="far fa-arrow-alt-circle-right bg-secondary ml-2"></i>
@@ -26,34 +33,6 @@
             </div>
         <% end %>
         
-    </div>
-    <!--レスポンシブ時のみ表示する投稿を3つにするために記述を分けている-->
-    <div class="row justify-content-center">
-        <% @posts[4..6].each do |post| %>
-            <div class="card d-sm-block d-none ml-3 mb-4" style="width:16rem">
-                <%= link_to post_path(post) do %>
-                    <% post.post_images.first(1).each do |post_image| %>
-                        <%= attachment_image_tag post_image, :post_image, size: "100x200" , class:"card-img-top border"%>
-                　  <% end %>
-                <% end %>
-                　  <div class="card-body bg-secondary">
-                　      <h5 class="card-title bg-secondary">
-                　        <%= post.username %>
-                　      </h5>
-                　  </div>
-                　  
-                　  <div class="card-body bg-secondary d-flex justify-content-end">
-                　        <div class="bg-secondary" id="index_like_<%= post.id %>">
-                            <%= render 'likes/like', post: post %>
-                        </div>
-                        <div class="bg-secondary">
-                            <%= link_to post_path(post) do %>
-                                <i class="far fa-arrow-alt-circle-right bg-secondary ml-2"></i>
-                            <% end %>
-                        </div>
-                　  </div>
-            </div>
-        <% end %>
     </div>
     
 <% end %>

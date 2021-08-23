@@ -5,6 +5,9 @@ class PostsController < ApplicationController
   def index
     #投稿を新着順で7個
     @posts = Post.order(created_at: :desc).limit(7)
+    if params[:tag_name]
+      @posts = Post.tagged_with("#{params[:tag_name]}")
+    end
   end
 
   def show
@@ -62,7 +65,8 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:title, :content, post_images_post_images: [])
+      params.require(:post).permit(:title, :content, :tag_list, post_images_post_images: [])
     end
+    
     
 end

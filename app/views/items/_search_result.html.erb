@@ -1,9 +1,8 @@
 <% if @items.present? %>
   <% @items.each do |item| %>
-      <p><%= item.itemname %></p>
-      <p><%= item.itemprice %></p>
-      <% if item.imageflag == 1 %>
-          <%= image_tag item.mediumimageurls %>
-      <%end%>
+      <p><%= item.name %></p>
+      <p><%= item.price %></p>
+      <%= link_to image_tag(item.image, size: "200x200"), "/" %>
+         
   <% end %>
  <% end %>

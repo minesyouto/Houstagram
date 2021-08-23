@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     post "likes" => "likes#create"
     delete "likes" => "likes#destroy"
     post "comments" => "comments#create"
+    resources :items, only: [:create, :destroy]
   end
   resources :comments, only: [:destroy]
   get 'items/search', to: "items#search"

@@ -7,7 +7,11 @@ class Post < ApplicationRecord
     #post_image(_id)をpostのviewにて表示させるための設定
     belongs_to :user
     
+    has_many :post_items
+    
     has_many :comments, dependent: :destroy
+    
+    acts_as_taggable
     
     validates :title, presence: true
     validates :content, presence: true
