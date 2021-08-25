@@ -23,10 +23,11 @@ class ItemsController < ApplicationController
         pp @items
     end
     
-    def item_save
+    def edit
         @item = Item.find(params[:id])
         @item.save
     end
+    
     
     private
     #楽天APIのデータから必要なデータを絞り込む、且つ対応するカラムにデータを格納するメソッドを設定

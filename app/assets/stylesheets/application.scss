@@ -27,6 +27,12 @@
  .border {
   color: #001858;
  }
+ .modal-content {
+  z-index:9999;
+ }
+ .show {
+  background:#ffffff8a;
+ }
  
  
  // 以下カラーコード記載

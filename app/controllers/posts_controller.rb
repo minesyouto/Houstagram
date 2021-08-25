@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[ show edit update destroy ]
   
 
   def index
@@ -60,9 +59,6 @@ class PostsController < ApplicationController
   end
 
   private
-    def set_post
-      @post = Post.find(params[:id])
-    end
 
     def post_params
       params.require(:post).permit(:title, :content, :tag_list, post_images_post_images: [])

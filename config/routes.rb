@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+  omniauth_callbacks: 'users/omniauth_callbacks',
+  registrations: 'users/registrations'
+  }
   
   root to: "posts#index"
   
@@ -15,11 +18,11 @@ Rails.application.routes.draw do
     post "likes" => "likes#create"
     delete "likes" => "likes#destroy"
     post "comments" => "comments#create"
-    resources :items, only: [:create, :destroy]
+
   end
   resources :comments, only: [:destroy]
   get 'items/search', to: "items#search"
-  
-  
+  resources :items, only: [:destroy]
+  post 'items/:id' => "items#edit"
   
 end

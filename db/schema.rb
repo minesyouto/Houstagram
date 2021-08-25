@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_23_073710) do
+ActiveRecord::Schema.define(version: 2021_08_25_065535) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -82,6 +82,24 @@ ActiveRecord::Schema.define(version: 2021_08_23_073710) do
     t.index ["follower_id", "following_id"], name: "index_relationships_on_follower_id_and_following_id", unique: true
   end
 
+  create_table "sns", force: :cascade do |t|
+    t.string "provider"
+    t.string "uid"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sns_on_user_id"
+  end
+
+  create_table "sns_logins", force: :cascade do |t|
+    t.string "provider"
+    t.string "uid"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sns_logins_on_user_id"
+  end
+
   create_table "taggings", force: :cascade do |t|
     t.integer "tag_id"
     t.string "taggable_type"
@@ -120,6 +138,8 @@ ActiveRecord::Schema.define(version: 2021_08_23_073710) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false
+    t.string "provider"
+    t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
