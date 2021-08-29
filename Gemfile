@@ -72,7 +72,6 @@ gem 'rakuten_web_service'
 gem 'dotenv-rails'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'omniauth-google-oauth2'
-gem 'listen'
 group :production do
   gem 'mysql2'
 end
