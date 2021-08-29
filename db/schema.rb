@@ -82,15 +82,6 @@ ActiveRecord::Schema.define(version: 2021_08_25_065535) do
     t.index ["follower_id", "following_id"], name: "index_relationships_on_follower_id_and_following_id", unique: true
   end
 
-  create_table "sns", force: :cascade do |t|
-    t.string "provider"
-    t.string "uid"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_sns_on_user_id"
-  end
-
   create_table "sns_logins", force: :cascade do |t|
     t.string "provider"
     t.string "uid"
