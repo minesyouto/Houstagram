@@ -22,7 +22,6 @@ Rails.application.routes.draw do
   end
   resources :comments, only: [:destroy]
   get 'items/search', to: "items#search"
-  resources :items, only: [:destroy]
-  post 'items/:id' => "items#edit"
+  resources :items, only: [:destroy, :update]
   
 end

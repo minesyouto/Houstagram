@@ -1,36 +1,39 @@
 <div class="container d-flex flex-column">
     <div class="row visible-xs-block">
-        <h2>新着投稿</h2>
+        <h2 style="color:#2A3D45;">Recent posts</h2>
     </div>
     
 <% if @posts.present? %>
     
     <div class="row justify-content-center">
         <% @posts.each do |post| %>
-            <div class="card ml-3 mb-4" style="width: 16rem;">
+            <div class="col-sm-3">
+                <div class="card mb-4">
                 <% post.post_images.first(1).each do |post_image| %>
                     <%= attachment_image_tag post_image, :post_image, size: "100x200" , class:"card-img-top border"%>
                 <% end %>
                 
-              <div class="card-body bg-secondary">
-                <h5 class="card-title bg-secondary">
-                    <%= post.username %>
-                </h5>
-              </div>
+                <div class="card-body main">
+                    <div class="card-title main">
+                        <%= render 'tag_list', tag_list: post.tag_list %>
+                    </div>
+                    
+                    <div class="card-text main">
+                        <p style="background-color:#2A3D45;"><%= post.username %>　<%= post.title %></p>
+                    </div>
+                    
+                    <div class="card-text main d-flex justify-content-end">
+                        <%= render 'likes/like', post: post %>
+                        <%= link_to post_path(post) do %>
+                            <i class="far main fa-arrow-alt-circle-right ml-2"></i>
+                        <% end %>
+                    </div>
+                    
+                </div>
               
-              <div class="card-body bg-secondary">
-                  <%= post.title %>
-                  <br>
-                  <%= render 'tag_list', tag_list: post.tag_list %>
-              </div>
-              
-              <div class="card-text bg-secondary d-flex justify-content-end">
-                <%= render 'likes/like', post: post %>
-                <%= link_to post_path(post) do %>
-                    <i class="far fa-arrow-alt-circle-right bg-secondary ml-2"></i>
-                <% end %>
-              </div>
             </div>
+            </div>
+            
         <% end %>
         
     </div>

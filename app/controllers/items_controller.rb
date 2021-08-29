@@ -20,13 +20,15 @@ class ItemsController < ApplicationController
                 item.save
             end
         end
-        pp @items
     end
     
-    def edit
+    def update
         @item = Item.find(params[:id])
-        @item.save
+        render 'posts/item'
     end
+    #質問事項
+    #@itemsという空の配列を用意して、その中にアイテムを追加していきたい
+    #このItemと投稿を紐付けたい
     
     
     private

@@ -12,18 +12,51 @@
  *= require_tree .
  *= require_self
  */
- $secondary: #f3d2c1;
- $primary: #001858;
  @import "bootstrap";
  @import "font-awesome";
+ // 配色
+ // ベースカラー:#E1DABD
+ // メインカラー:#2A3D45
+ // サブメインカラー:5688C7
+ // アクセントカラー:#E76F51
+
  
  a:hover {
   text-decoration: none;
  }
 * {
-  background:#fef6e4;
-  color:#001858;
+  background:#E1DABD;
+  color:#ffffff;
  }
+ .header {
+  color:#ffffff;
+ }
+ .base {
+  color:#E1DABD;
+ }
+ .bg-base{
+  background-color:#E1DABD;
+ }
+ .main {
+  background-color:#2A3D45;
+ }
+ .bg-main{
+  color:#2A3D45;
+ }
+ .sub-main{
+  color: #5688C7;
+ }
+ .bg-sub-main{
+  background-color: #5688C7;
+ }
+ .bg-accent{
+  background-color:#E76F51;
+ }
+ .accent{
+  color:#E76F51;
+ }
+ 
+ 
  .border {
   color: #001858;
  }
@@ -33,7 +66,6 @@
  .show {
   background:#ffffff8a;
  }
- 
  
  // 以下カラーコード記載
  // 背景色:#fef6e4

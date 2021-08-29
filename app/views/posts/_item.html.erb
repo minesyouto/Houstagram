@@ -1,0 +1,7 @@
+<div class="card border mx-auto d-block">
+  <div class="card-img-top">
+        <%= link_to image_tag(@item.image, size: "150x150"), "item.url" %>
+  </div>
+  <div class="card-body"><%= @item.name %></div>
+  <div class="card-body"><%= @item.price %></div>
+</div>

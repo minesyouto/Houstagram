@@ -1,8 +1,24 @@
+
 <% if @items.present? %>
   <% @items.each do |item| %>
-      <p><%= item.name %></p>
-      <p><%= item.price %></p>
-      <%= link_to image_tag(item.image, size: "200x200"), "item.url" %>
-      <%= button_to 'ユーザー登録', item_path(id:item.id), method: :post ,class: "btn btn-info" , remote: true %>
-  <% end %>
+    <div class="card d-flex justify-content-center">
+      <div class="card-img-top">
+        <%= link_to image_tag(item.image, size: "150x150"), "item.url" %>
+      </div>
+      <div class="card-body">
+        <div class="card-title">
+          <%= item.name %>
+        </div>
+        <div class="card-text">
+          <%= number_to_currency(item.price, unit: "￥", strip_insignificant_zeros: true) %>
+        </div>
+        <div class="card-text">
+          <%= button_to '登録', item_path(id:item.id), method: :patch ,class: "btn btn-info" , remote: true %>
+        </div>
+      </div>
+    </div>
  <% end %>
+
+
+
+<% end %>
