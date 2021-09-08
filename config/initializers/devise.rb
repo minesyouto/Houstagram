@@ -14,7 +14,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '4517c673be1f3b26ecbd35da69274b629a04cf266ac01aa4804b3c86924bf8da52ce1ae083e37969a737d6cc9256d55f9a122403f845b4cbae623d1a990e1e01'
+  # config.secret_key = '845e3d3b130727844dbc3f9aee675fa56acf0425a88e309d1c10fd841451c8c9c150f41baf5262c8bd7e395227dfe8ae66ac6b0b2ce9c7912c888de66f6770be'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -46,7 +46,7 @@ Devise.setup do |config|
   # session. If you need permissions, you should implement that in a before filter.
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
-   config.authentication_keys = [:username]
+  # config.authentication_keys = [:email]
 
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
@@ -126,7 +126,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '27e4326dd8d1317d92e5578f481da6e34f8844458813ee2b07b46f6408bf60b2433db421c673ca1242cc81ca08132823d03ab09955e9e17afe9b1ba3ae5b848a'
+  # config.pepper = 'd180de8b64e9d44203d0b29e1617727c585d51a1c414418c02d039fee3934d4e8639cd79db01f19ec02757dce02e849e96cd6f029fd3dc16feb5ae70a9c579ef'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -308,5 +308,4 @@ Devise.setup do |config|
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
-  config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET']
 end

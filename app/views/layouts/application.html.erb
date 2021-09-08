@@ -41,6 +41,9 @@
                   <%= current_user.username %>さんようこそ！
                 <% end %>
               </li>
+              <li class="nav-item nav-link main header border" style="color:#ffffff;">
+                <%= link_to 'ログアウト', destroy_user_session_path ,style: "color:#ffffff" %>
+              </li>
             <% else %>
               <li class="nav-item nav-link main header border" style="color:#ffffff;">
                 <%= link_to 'Sign in' ,new_user_session_path, style:"color:#ffffff;" %>

@@ -14,12 +14,3 @@ User.create!(
     password_confirmation: "11111111",
     admin: true)
     
-5.times do |n|
-    User.create!(
-      name: "テストユーザー#{n + 1}",
-      username: "Test#{n + 1}",
-      email: "test#{n + 1}@gmail.com",
-      password: "111111",
-      password_confirmation: "111111",
-    )
-  end
