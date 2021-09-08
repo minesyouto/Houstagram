@@ -36,12 +36,11 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params.merge(user_id: current_user.id, username: current_user.username))
-    
       if @post.save
         @post_image = PostImage.find_by(post_id:[@post.id])
         tags = Vision.get_image_data(@post_image)
         tags.each do |tag|
-          list.tags.create(name:tag)
+          @post_image.post_tags.create(name:tag)
         end
         redirect_to root_path
       else
@@ -71,3 +70,4 @@ class PostsController < ApplicationController
     
     
 end
+

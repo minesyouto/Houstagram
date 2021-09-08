@@ -37,8 +37,7 @@ module Vision
       response_body = JSON.parse(response.body)
       # APIレスポンス出力
       puts response_body
-      #response_bodyも問題ない。タグも返ってきているが以下の処理でresponse_bodyがnilと言われている？
-      response_body['response']['labelAnnotations'].pluck('description').take(3)
+      response_body['responses'][0]['labelAnnotations'].pluck('description').take(3)
     end
   end
 end

@@ -29,6 +29,14 @@
                         <% end %>
                     </div>
                     
+                    <div class="card-text main d-flex justify-content-end">
+                        <% if PostTag.where(post_image_id: post.post_images.first(1)[0].id) %>
+                            <% post.post_images.first(1)[0].post_tags.each do |tag| %>
+                                <%= tag.name %>
+                            <% end %>
+                        <% end %>
+                    </div>
+                    
                 </div>
               
             </div>
